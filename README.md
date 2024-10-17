@@ -1,10 +1,10 @@
 # Advocate_client_website
 
 ## how to run the project
-run init_db.py
-then run app.py
+\n run init_db.py
+\n then run app.py
 
 ## Things to install
-python 3.9
-pip
-flask using pip
+\n python 3.9
+\n pip
+\n flask using pip
