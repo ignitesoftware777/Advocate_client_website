@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard</title>
+</head>
+<body>
+
+    <h1>Client Dashboard</h1>
+
+    <!-- Profile Section -->
+    <h2>Profile Section</h2>
+    <div>
+        <img src="placeholder-profile.jpg" alt="Profile Picture" width="100" height="100">
+        <p><strong>Name:</strong> {{ client['first_name'] }} {{ client['middle_name'] }} {{ client['last_name'] }}</p>
+        <p><strong>Email:</strong> {{ client['email'] }}</p>
+        <p><strong>Phone:</strong> {{ client['phone'] }}</p>
+        <p><strong>Address:</strong> {{ client['address_line'] }}, {{ client['address_line2'] }}, {{ client['city'] }}, {{ client['pincode'] }}</p>
+        <button onclick="window.location.href='{{url_for('edit_client')}}'">Edit Profile</button>
+    </div>
+
+
+    <!-- Search Advocates Section -->
+    <h2>Search for Advocates</h2>
+    <label for="filterLocation">Filter by Location:</label><br>
+    <select id="filterLocation" name="filterLocation">
+        <option value="">Select Location</option>
+        <option value="city1">City 1</option>
+        <option value="city2">City 2</option>
+        <option value="city3">City 3</option>
+    </select><br><br>
+
+
+    {% for advocate in advocates %}
+        <div>
+            <img src="placeholder-profile.jpg" alt="Profile Picture" width="100" height="100">
+            <h3>{{ advocate['first_name'] }} {{ advocate['last_name'] }}</h3>
+            <p><strong>Specialization:</strong> {{ advocate['specialization'] }}</p>
+            <p><strong>Phone:</strong> {{ advocate['phone'] }}</p>
+            <p><strong>City:</strong> {{ advocate['city'] }}</p>
+            <button>Hire for a Case</button>
+        </div><br><br>
+    {% endfor %}
+
+    <!-- Active Cases Section -->
+    <h2>Active Cases</h2>
+    <table border="1">
+        <tr>
+            <th>Case Name</th>
+            <th>Case Description</th>
+            <th>Handling Advocate</th>
+            <th>Case Status</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>Case 1</td>
+            <td>Description of Case 1</td>
+            <td>Advocate A</td>
+            <td>
+                <select>
+                    <option value="new">New</option>
+                    <option value="ongoing">Ongoing</option>
+                    <option value="waiting">Waiting</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </td>
+            <td><button>Chat with Advocate</button>
+                <button>Edit case details</button></td>
+        </tr>
+        <tr>
+            <td>Case 2</td>
+            <td>Description of Case 2</td>
+            <td>Advocate B</td>
+            <td>
+                <select>
+                    <option value="new">New</option>
+                    <option value="ongoing">Ongoing</option>
+                    <option value="waiting">Waiting</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </td>
+            <td><button>Chat with Advocate</button>
+                <button>Edit case details</button></td>
+        </tr>
+    </table>
+
+    <!-- Closed Cases Section -->
+    <h2>Closed Cases</h2>
+    <table border="1">
+        <tr>
+            <th>Case Name</th>
+            <th>Case Description</th>
+            <th>Advocate Name</th>
+            <th>Outcome</th>
+            <th>Re-open</th>
+        </tr>
+        <tr>
+            <td>Case 1</td>
+            <td>Description of Case 1</td>
+            <td>Advocate A</td>
+            <td>Success</td>
+            <td><button>Re-open</button></td>
+        </tr>
+        <tr>
+            <td>Case 2</td>
+            <td>Description of Case 2</td>
+            <td>Advocate B</td>
+            <td>Failure</td>
+            <td><button>Re-open</button></td>
+        </tr>
+    </table>
+
+</body>
+</html>
